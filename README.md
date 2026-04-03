@@ -1,16 +1,34 @@
-# React + Vite
+# 💖 Romantic Birthday Surprise Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An interactive, cinematic multi-page surprise website built with **React + Three.js**.  
+It includes a heart collection system, mini‑games, a daily gift box, background music, and a secret unlockable page – all designed to create an unforgettable birthday experience.
 
-Currently, two official plugins are available:
+![Preview](https://praveenkanth2805.github.io/romantic-birthday/preview.png)  
+*(Add a screenshot of your website here)*
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## ✨ Features
 
-## React Compiler
+- 🎬 **Cinematic intro** – Typing animation followed by a gift box.
+- 💖 **Heart collection** – Hidden hearts on different pages; collect 5 to unlock the secret.
+- 🎮 **Two romantic mini‑games** – Catch falling hearts & space shooter.
+- 🎁 **Daily gift box** – A different virtual gift each day leading to the birthday (chocolate, teddy, flowers, cake on the birthday). Automatically pops up 3 seconds after the home page loads.
+- 🎵 **Background music** – Auto‑plays (with fallback on first click) and has a working pause/mute button.
+- 💌 **Vintage‑style love letter** – Old paper look with wax seal effect.
+- 🚀 **Fully responsive** – Works on mobile and desktop.
+- 🔐 **Secret page** – Appears after collecting all 5 hearts.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
 
-## Expanding the ESLint configuration
+- **Frontend:** React (Vite), React Router DOM
+- **3D Graphics:** @react-three/fiber, @react-three/drei, Three.js
+- **Animations:** Framer Motion, CSS keyframes
+- **State Management:** Zustand + localStorage
+- **Styling:** Tailwind CSS
+- **Hosting:** GitHub Pages
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 📦 Installation
+
+```bash
+git clone https://github.com/Praveenkanth2805/romantic-birthday.git
+cd romantic-birthday
+npm install

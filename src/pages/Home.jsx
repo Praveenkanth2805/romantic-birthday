@@ -12,8 +12,8 @@ const Home = () => {
   const navigate = useNavigate();
   const { hearts, collectHeart, collectedHearts, secretUnlocked } = useLoveStore();
   const [showSecretAlert, setShowSecretAlert] = useState(false);
-  const Name = import.meta.env.VITE_HER_NAME || 'My Love';
-  const nickname = import.meta.env.VITE_NICKNAME || 'Sweet heart';
+  const Name = import.meta.env.VITE_NICKNAME || 'My Love';
+  //const nickname = import.meta.env.VITE_NICKNAME || 'Sweet heart';
 
   const birthdayDate = new Date(import.meta.env.VITE_BIRTHDAY || '2026-04-11');
   const today = new Date();

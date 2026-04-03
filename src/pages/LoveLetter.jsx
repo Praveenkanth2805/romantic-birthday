@@ -60,7 +60,7 @@ const LoveLetter = () => {
               <p className="text-right not-italic">
                 With every beat of my heart,<br />
                 <span className="text-2xl font-bold">Your Forever,</span><br />
-                <span className="text-xl text-amber-700">Praveen 💖</span>
+                <span className="text-xl text-amber-700">Praveenkanth 💖</span>
               </p>
             </div>
 
