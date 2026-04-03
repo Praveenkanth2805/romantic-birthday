@@ -1,24 +1,25 @@
-// vite.config.js
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  //base: './',
   base: '/romantic-birthday/',
-  server: {
-    host: true,
-    port: 3000,
-  },
   build: {
-    outDir: 'dist',
-    sourcemap: false,
     rollupOptions: {
       output: {
-        manualChunks: {
-          three: ['three', '@react-three/fiber', '@react-three/drei'],
-        },
-      },
-    },
-  },
+        manualChunks: (id) => {
+          // Group three.js related modules into a separate chunk
+          if (id.includes('node_modules/three') || 
+              id.includes('@react-three/fiber') || 
+              id.includes('@react-three/drei')) {
+            return 'three';
+          }
+          // Everything else goes to vendor
+          if (id.includes('node_modules')) {
+            return 'vendor';
+          }
+        }
+      }
+    }
+  }
 })
