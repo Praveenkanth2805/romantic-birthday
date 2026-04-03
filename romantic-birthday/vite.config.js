@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/romantic-birthday/',
+  base: '/romantic-birthday/romantic-birthday/',
   build: {
     rollupOptions: {
       output: {
