@@ -4,18 +4,15 @@ import { motion, AnimatePresence } from 'framer-motion';
 const DailyGift = () => {
   const [gift, setGift] = useState(null);
   const [showGift, setShowGift] = useState(false);
-  const [hasOpenedToday, setHasOpenedToday] = useState(false);
+  const [autoShowDone, setAutoShowDone] = useState(false);
 
   const birthdayStr = import.meta.env.VITE_BIRTHDAY || '2026-04-11';
   const birthdayDate = new Date(birthdayStr);
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-
-  // Calculate days before birthday (difference in days)
   const timeDiff = birthdayDate - today;
   const daysBefore = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
 
-  // Gift mapping: day offset (0 = birthday) -> gift
   const gifts = {
     0: { name: '🎂 Birthday Cake', emoji: '🎂', message: 'Happy Birthday! Enjoy this virtual cake! 🍰' },
     1: { name: '🍫 Chocolate', emoji: '🍫', message: 'A sweet chocolate for you! 🍬' },
@@ -24,38 +21,26 @@ const DailyGift = () => {
     4: { name: '💌 Love Letter', emoji: '💌', message: 'A heartfelt love letter just for you! ✨' },
     5: { name: '🎁 Surprise Box', emoji: '🎁', message: 'A mystery gift – open to see! 🎀' },
     6: { name: '🌟 Star Promise', emoji: '🌟', message: 'I promise to love you forever! 💫' },
-    7: { name: '💎 Diamond Ring', emoji: '💍', message: 'A sparkly ring – will you marry me? (just virtual for now!) 😄' },
+    7: { name: '💎 Diamond Ring', emoji: '💍', message: 'A sparkly ring – will you marry me? (just virtual!) 😄' },
   };
 
-  // Determine which gift to show based on days before birthday
   useEffect(() => {
     let dayOffset = daysBefore;
-    if (dayOffset < 0) dayOffset = 0; // after birthday, show cake
-    if (dayOffset > 7) dayOffset = 7;  // more than 7 days before, show first gift (chocolate)
-    const giftData = gifts[dayOffset] || gifts[1];
-    setGift(giftData);
+    if (dayOffset < 0) dayOffset = 0;
+    if (dayOffset > 7) dayOffset = 7;
+    setGift(gifts[dayOffset] || gifts[1]);
   }, [daysBefore]);
 
-  // Check if user already opened today's gift (store in localStorage with date)
+  // Auto-show popup 3 seconds after component mounts (every reload)
   useEffect(() => {
-    const lastOpened = localStorage.getItem('dailyGiftDate');
-    const todayStr = today.toDateString();
-    if (lastOpened === todayStr) {
-      setHasOpenedToday(true);
-    } else {
-      setHasOpenedToday(false);
-    }
-  }, [today]);
+    const timer = setTimeout(() => {
+      setShowGift(true);
+      setAutoShowDone(true);
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
-  const handleOpenGift = () => {
-    if (hasOpenedToday) return;
-    setShowGift(true);
-    setHasOpenedToday(true);
-    localStorage.setItem('dailyGiftDate', today.toDateString());
-    // Optional: collect a heart when opening gift
-    // You can integrate with useLoveStore if you want
-  };
-
+  const handleOpenGift = () => setShowGift(true);
   const closeGift = () => setShowGift(false);
 
   if (!gift) return null;
@@ -63,18 +48,14 @@ const DailyGift = () => {
   return (
     <>
       <motion.div
-        initial={{ scale: 0.8, opacity: 0 }}
-        animate={{ scale: 1, opacity: 1 }}
-        className="fixed bottom-24 left-1/2 transform -translate-x-1/2 z-30 cursor-pointer"
+        initial={{ scale: 0 }}
+        animate={{ scale: 1 }}
+        whileHover={{ scale: 1.05 }}
         onClick={handleOpenGift}
+        className="absolute bottom-4 left-4 z-20 cursor-pointer bg-white/20 backdrop-blur-md rounded-2xl p-3 shadow-xl flex items-center gap-2"
       >
-        <div className="relative w-20 h-20 bg-gradient-to-br from-pink-400 to-red-500 rounded-2xl shadow-2xl flex items-center justify-center hover:scale-105 transition-transform">
-          <span className="text-4xl animate-bounce">🎁</span>
-          {!hasOpenedToday && (
-            <div className="absolute -top-2 -right-2 w-5 h-5 bg-yellow-400 rounded-full animate-pulse" />
-          )}
-        </div>
-        <p className="text-center text-white text-sm mt-1 font-medium">Daily Gift</p>
+        <span className="text-3xl">🎁</span>
+        <span className="text-white font-medium text-sm">Daily Gift</span>
       </motion.div>
 
       <AnimatePresence>
