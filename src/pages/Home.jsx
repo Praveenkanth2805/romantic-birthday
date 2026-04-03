@@ -6,6 +6,7 @@ import HeartCollector from '../components/common/HeartCollector';
 import ProgressBar from '../components/common/ProgressBar';
 import SpaceScene from '../components/three/SpaceScene';
 import { useLoveStore } from '../store/useLoveStore';
+import DailyGift from '../components/common/DailyGift';
 
 const Home = () => {
   const navigate = useNavigate();
@@ -14,6 +15,14 @@ const Home = () => {
   //const herName = import.meta.env.VITE_HER_NAME || 'My Love';
   const Name = import.meta.env.VITE_NAME || 'My Love';
   const nickname = import.meta.env.VITE_NICKNAME || 'Sweet heart';
+
+  const birthdayDate = new Date(import.meta.env.VITE_BIRTHDAY || '2026-04-11');
+const today = new Date();
+// Normalize dates to compare only year/month/day
+const isBirthday = today.getFullYear() === birthdayDate.getFullYear() &&
+                   today.getMonth() === birthdayDate.getMonth() &&
+                   today.getDate() === birthdayDate.getDate();
+const greeting = isBirthday ? 'Happy Birthday!' : 'Advance Happy Birthday!';
 
   // Show alert when secret gets unlocked
   useEffect(() => {
@@ -82,7 +91,7 @@ const Home = () => {
           className="text-center"
         >
           <h1 className="text-4xl md:text-6xl font-cursive text-pink-800 mb-2">
-            Happy Birthday,{Name}! 🎂
+            {greeting},{Name}! 🎂
           </h1>
           <p className="text-xl md:text-2xl text-pink-700 mb-4">
              Every day with you is a celebration of love 💖
@@ -155,7 +164,7 @@ const Home = () => {
           </Link>
         </motion.div>
       </div>
-      
+      <DailyGift />
       {/* Hint for remaining hearts */}
       {hearts < 5 && hearts > 0 && (
         <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 animate-pulse">
