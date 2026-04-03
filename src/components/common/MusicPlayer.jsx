@@ -2,9 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 
 const MusicPlayer = () => {
-  const [isPlaying, setIsPlaying] = useState(true); // Default to true (playing)
+  const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const audioRef = useRef(null);
+  const hasStartedRef = useRef(false);
 
   useEffect(() => {
     // Create single audio instance
@@ -13,18 +14,34 @@ const MusicPlayer = () => {
     audio.volume = 0.5;
     audioRef.current = audio;
 
-    // Attempt to autoplay
+    // Attempt autoplay
     const playPromise = audio.play();
     if (playPromise !== undefined) {
-      playPromise.then(() => {
-        setIsPlaying(true);
-      }).catch(() => {
-        setIsPlaying(false);
-        // Autoplay blocked – will start on first user interaction
-      });
+      playPromise
+        .then(() => {
+          setIsPlaying(true);
+          hasStartedRef.current = true;
+        })
+        .catch(() => {
+          setIsPlaying(false);
+          // Wait for first user interaction
+          const startAudio = () => {
+            if (audioRef.current && !hasStartedRef.current) {
+              audioRef.current.play()
+                .then(() => {
+                  setIsPlaying(true);
+                  hasStartedRef.current = true;
+                })
+                .catch(e => console.log(e));
+              window.removeEventListener('click', startAudio);
+              window.removeEventListener('touchstart', startAudio);
+            }
+          };
+          window.addEventListener('click', startAudio);
+          window.addEventListener('touchstart', startAudio);
+        });
     }
 
-    // Cleanup on unmount
     return () => {
       if (audioRef.current) {
         audioRef.current.pause();
@@ -33,11 +50,8 @@ const MusicPlayer = () => {
     };
   }, []);
 
-  // Mute effect
   useEffect(() => {
-    if (audioRef.current) {
-      audioRef.current.muted = isMuted;
-    }
+    if (audioRef.current) audioRef.current.muted = isMuted;
   }, [isMuted]);
 
   const togglePlay = () => {
@@ -48,7 +62,7 @@ const MusicPlayer = () => {
     } else {
       audioRef.current.play()
         .then(() => setIsPlaying(true))
-        .catch(err => console.log('Play error:', err));
+        .catch(e => console.log(e));
     }
   };
 
