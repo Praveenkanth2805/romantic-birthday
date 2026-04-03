@@ -1,0 +1,92 @@
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply m-0 p-0 overflow-x-hidden bg-gradient-to-br from-pink-100 via-red-50 to-purple-100;
+    font-family: 'Dancing Script', 'Segoe UI', cursive, system-ui;
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-pink-100 rounded-full;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-pink-400 rounded-full;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+.animate-heartbeat {
+  animation: heartbeat 1.2s ease-in-out infinite;
+}
+.animate-twinkle {
+  animation: twinkle 2s ease-in-out infinite;
+}
+.glass-effect {
+  @apply backdrop-blur-md bg-white/20 border border-white/30 shadow-xl;
+}
+
+/* src/index.css - add these overrides at the end */
+
+/* Make all default text darker */
+body, .glass-effect, .text-white {
+  color: #4a1d3d !important; /* Dark plum color */
+}
+
+/* Keep headings and specific elements with better contrast */
+h1, h2, h3, .font-cursive, .font-romantic {
+  color: #831843 !important; /* Dark pink */
+}
+
+/* Glass effect background needs darker text */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.85) !important;
+  backdrop-filter: blur(12px);
+  color: #2d1a2c !important;
+}
+
+/* Buttons and interactive elements keep white text on dark backgrounds */
+button, .bg-gradient-to-r, .rounded-full.bg-pink-500 {
+  color: white !important;
+}
+
+/* Progress bar text */
+.text-pink-700, .text-pink-500, .text-pink-200 {
+  color: #9d174d !important;
+}
+
+/* Love letter text */
+#love-letter-text, .space-y-6 p {
+  color: #4c1d3d !important;
+  font-weight: 500;
+}
+
+/* Heart collector counter */
+.fixed.top-4 .text-white {
+  color: #2d1a2c !important;
+}
+
+/* Game scores */
+.text-2xl.font-bold.text-white {
+  color: #2d1a2c !important;
+}
