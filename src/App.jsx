@@ -21,7 +21,7 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter basename="/romantic-birthday/romantic-birthday"> 
+    <BrowserRouter> 
       <div className="relative min-h-screen overflow-x-hidden">
         {/* Background floating hearts effect */}
         <div className="fixed inset-0 pointer-events-none z-0">
