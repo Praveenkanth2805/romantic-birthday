@@ -43,7 +43,7 @@ Create a `.env` file in the root directory:
 
 ```
 VITE_HER_NAME="Your Beloved's Name"
-VITE_BIRTHDAY=2026-04-11
+VITE_BIRTHDAY=yyyy-mm-dd
 VITE_NICKNAME="Sweetheart"
 ```
 
