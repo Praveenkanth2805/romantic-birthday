@@ -121,6 +121,16 @@ const Home = () => {
     )}
   </AnimatePresence>
 </motion.div>
+{/* Hidden Heart Button - Home Page */}
+<motion.button
+  whileHover={{ scale: 1.2 }}
+  whileTap={{ scale: 0.9 }}
+  onClick={handleCollectHeart}
+  className="fixed bottom-24 left-4 z-40 w-12 h-12 bg-white/40 rounded-full backdrop-blur-sm flex items-center justify-center cursor-pointer hover:bg-white/60 transition-all shadow-lg"
+  //style={{ boxShadow: '0 0 20px rgba(255,105,180,0.8)' }}
+>
+  <span className="text-2xl">💖</span>
+</motion.button>
 
         {/* Secret Entry Button (only when unlocked) */}
         {secretUnlocked && (
