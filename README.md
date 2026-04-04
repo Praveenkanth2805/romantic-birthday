@@ -3,8 +3,11 @@
 A cinematic, interactive birthday experience built with React, Three.js, and Tailwind CSS.
 Features a hidden heart collection system, daily virtual gifts, mini-games, a vintage love letter, a countdown, and a secret unlockable surprise – all wrapped in a romantic space-themed 3D scene.
 
-![Screenshot](https://via.placeholder.com/800x400?text=Romantic+Birthday+Website)
-![sample_images](/public/images)
+![sample_images](/public/images/home.png)
+![sample_images](/public/images/countdown.png)
+![sample_images](/public/images/dailygift.png)
+![sample_images](/public/images/letter.png)
+![sample_images](/public/images/secret.png)
 
 ## ✨ Features
 
