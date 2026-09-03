@@ -1,150 +1,428 @@
 # 💖 Romantic Birthday Surprise Website
 
-A cinematic, interactive birthday experience built with React, Three.js, and Tailwind CSS.
-Features a hidden heart collection system, daily virtual gifts, mini-games, a vintage love letter, a countdown, and a secret unlockable surprise – all wrapped in a romantic space-themed 3D scene.
+> A cinematic, interactive birthday experience created with **React, Three.js, and Tailwind CSS** — designed to turn a birthday into a memorable digital surprise. 💕✨
 
-![sample_images](/public/images/home.png)
-![sample_images](/public/images/countdown.png)
-![sample_images](/public/images/dailygift.png)
-![sample_images](/public/images/letter.png)
-![sample_images](/public/images/secret.png)
+![Home Preview](/public/images/home.png)
+![Countdown Preview](/public/images/countdown.png)
+![Daily Gift Preview](/public/images/dailygift.png)
+![Love Letter Preview](/public/images/letter.png)
+![Secret Preview](/public/images/secret.png)
+
+---
 
 ## ✨ Features
 
-* 🎬 **Cinematic intro** with typing animation and gift box
-* ❤️ **Hidden heart collection** (5 hearts unlock a secret page)
-* 🎁 **Daily gift box** – different virtual gift each day (chocolate, teddy, flowers, cake on birthday)
-* 🎮 **Two mini-games** – Catch the Hearts & Romantic Space Shooter
-* 💌 **Vintage-style love letter** with parchment effect and wax seal
-* ⏰ **Countdown timer** to the birthday, with confetti celebration
-* 🎵 **Background music** with play/pause & mute controls (autoplay attempt on load)
-* 🌌 **3D space scene** with floating hearts, stars, and sparkles
-* 📱 **Fully responsive** and mobile-friendly
-* 🔒 **Secret page** unlocked after collecting all hearts
-* 🚀 **Deployable to GitHub Pages** (static hosting)
+* 🎬 **Cinematic Introduction**
+
+  * Typing animation
+  * Interactive gift box
+  * Romantic opening experience
+
+* ❤️ **Hidden Heart Collection**
+
+  * Discover 5 hidden hearts throughout the website
+  * Collecting all hearts unlocks the secret page
+
+* 🎁 **Daily Virtual Gifts**
+
+  * Gift changes based on the number of days remaining
+  * Includes chocolate, teddy, flowers, cake, letter, surprise, star, and ring
+
+* 🎮 **Mini Games**
+
+  * Catch the Hearts
+  * Romantic Space Shooter
+
+* 💌 **Vintage Love Letter**
+
+  * Parchment-style design
+  * Wax seal effect
+  * Romantic interactive experience
+
+* ⏰ **Birthday Countdown**
+
+  * Live countdown timer
+  * Birthday celebration with confetti
+
+* 🎵 **Background Music**
+
+  * Play / pause controls
+  * Mute support
+  * Autoplay attempt after page load
+
+* 🌌 **3D Romantic Space**
+
+  * Floating hearts
+  * Stars
+  * Sparkles
+  * Interactive 3D environment
+
+* 📱 **Responsive Design**
+
+  * Mobile-friendly
+  * Tablet-friendly
+  * Desktop experience
+
+* 🔒 **Secret Surprise**
+
+  * Locked until all 5 hearts are collected
+  * Final surprise page
+
+* 🚀 **GitHub Pages Ready**
+
+  * Fully static frontend
+  * Can be deployed using GitHub Pages
+
+---
 
 ## 🛠️ Tech Stack
 
-* **Frontend**: React 18 + Vite
-* **3D Graphics**: React Three Fiber, Three.js, Drei
-* **Animations**: Framer Motion, CSS keyframes
-* **Styling**: Tailwind CSS
-* **State Management**: Zustand + localStorage persistence
-* **Routing**: React Router DOM
-* **Hosting**: GitHub Pages
+| Technology        | Purpose                        |
+| ----------------- | ------------------------------ |
+| React 18          | Frontend UI                    |
+| Vite              | Development & build tool       |
+| React Three Fiber | 3D React integration           |
+| Three.js          | 3D graphics                    |
+| Drei              | Three.js helpers               |
+| Framer Motion     | UI animations                  |
+| Tailwind CSS      | Styling                        |
+| Zustand           | State management               |
+| localStorage      | Persistent heart/gift progress |
+| React Router DOM  | Client-side routing            |
+| GitHub Pages      | Hosting                        |
+
+---
 
 ## 📦 Installation
 
+Clone the repository:
+
 ```bash
 git clone https://github.com/Praveenkanth2805/romantic-birthday.git
+```
+
+Navigate to the project:
+
+```bash
 cd romantic-birthday
+```
+
+Install dependencies:
+
+```bash
 npm install
 ```
 
+---
+
 ## ⚙️ Environment Variables
 
-Create a `.env` file in the root directory:
+Create a `.env` file in the project root:
 
-```
+```env
 VITE_HER_NAME="Your Beloved's Name"
-VITE_BIRTHDAY=yyyy-mm-dd
+VITE_BIRTHDAY="yyyy-mm-dd"
 VITE_NICKNAME="Sweetheart"
 ```
 
-Note: Values are baked at build time. Change them and rebuild to update the site.
+### Example
+
+```env
+VITE_HER_NAME="Your Beloved's Name"
+VITE_BIRTHDAY="2026-12-25"
+VITE_NICKNAME="Sweetheart"
+```
+
+> **Note:** Vite environment variables are embedded during the build process. After changing `.env`, restart the development server or rebuild the project.
+
+---
 
 ## 🚀 Running Locally
+
+Start the development server:
 
 ```bash
 npm run dev
 ```
 
-Open http://localhost:3000
+Then open:
 
-## 🎯 Building for Production
+```text
+http://localhost:3000
+```
+
+---
+
+## 🎯 Production Build
+
+Create a production build:
 
 ```bash
 npm run build
 ```
 
-The output will be in the `dist/` folder.
+The generated files will be available inside:
+
+```text
+dist/
+```
+
+Preview the production build locally:
+
+```bash
+npm run preview
+```
+
+---
 
 ## 🌐 Deploying to GitHub Pages
+
+### 1. Configure Vite
 
 Update `vite.config.js`:
 
 ```js
-base: '/romantic-birthday/',
+export default defineConfig({
+  base: '/romantic-birthday/',
+});
 ```
 
-Add deploy scripts in `package.json`.
+> The `base` value should match your GitHub repository name.
 
-Run:
+### 2. Add deployment scripts
+
+Configure your `package.json` with the required GitHub Pages deployment scripts.
+
+### 3. Deploy
 
 ```bash
 npm run deploy
 ```
 
-Enable GitHub Pages (branch: gh-pages).
+### 4. Enable GitHub Pages
 
-Live URL:
+In your GitHub repository:
+
+```text
+Settings
+   → Pages
+   → Deploy from branch
+   → gh-pages
+```
+
+### 🌍 Live Website
+
 https://Praveenkanth2805.github.io/romantic-birthday/
+
+---
 
 ## 📁 Project Structure
 
-```
+```text
 romantic-birthday/
+│
 ├── public/
+│   ├── images/
+│   │   ├── home.png
+│   │   ├── countdown.png
+│   │   ├── dailygift.png
+│   │   ├── letter.png
+│   │   └── secret.png
+│   │
 │   ├── music/
 │   │   └── bg.mp3
+│   │
 │   └── .nojekyll
+│
 ├── src/
 │   ├── components/
 │   ├── pages/
 │   ├── store/
 │   ├── App.jsx
 │   └── main.jsx
+│
 ├── .env
 ├── package.json
 ├── tailwind.config.js
 ├── vite.config.js
+└── README.md
 ```
 
-## 🎮 How to Play / Collect Hearts
+---
 
-* Open gift box → heart #1
-* Home page button → heart #2
-* Love Letter → heart #3
-* Countdown → heart #4
-* Games → heart #5
+## ❤️ Heart Collection
 
-After 5 → Secret page unlocks 🎉
+The website contains **5 hidden hearts**.
+
+| Heart | Location          |
+| ----- | ----------------- |
+| ❤️ #1 | Open the gift box |
+| ❤️ #2 | Home page button  |
+| ❤️ #3 | Love Letter       |
+| ❤️ #4 | Countdown         |
+| ❤️ #5 | Games             |
+
+Once all five hearts are collected:
+
+```text
+❤️ + ❤️ + ❤️ + ❤️ + ❤️
+            ↓
+     🔓 Secret Unlocked
+```
+
+🎉 The final secret page becomes accessible.
+
+---
 
 ## 🎁 Daily Gift Logic
 
-* Birthday → Cake 🎂
-* 1 day → Chocolate 🍫
-* 2 days → Teddy 🧸
-* 3 days → Flowers 🌸
-* 4 days → Letter 💌
-* 5 days → Surprise 🎁
-* 6 days → Star 🌟
-* 7+ → Ring 💍
+The virtual gift changes depending on how many days remain before the birthday.
+
+| Days Remaining | Gift      |
+| -------------: | --------- |
+|    🎂 Birthday | Cake      |
+|       🍫 1 day | Chocolate |
+|      🧸 2 days | Teddy     |
+|      🌸 3 days | Flowers   |
+|      💌 4 days | Letter    |
+|      🎁 5 days | Surprise  |
+|      🌟 6 days | Star      |
+|     💍 7+ days | Ring      |
+
+---
+
+## 🎮 Mini Games
+
+### ❤️ Catch the Hearts
+
+Catch as many hearts as possible and enjoy a small interactive romantic game.
+
+### 🚀 Romantic Space Shooter
+
+A space-themed mini-game featuring:
+
+* 🌌 Space environment
+* ❤️ Romantic elements
+* 🚀 Shooter gameplay
+* ✨ Animated effects
+
+---
+
+## 🎵 Background Music
+
+The website supports background music with:
+
+* ▶️ Play
+* ⏸️ Pause
+* 🔇 Mute
+* 🔊 Unmute
+
+> Modern browsers may block audio autoplay until the user interacts with the page.
+
+---
+
+## 🔒 Privacy & Data
+
+This project is designed as a **static frontend experience**.
+
+User progress such as collected hearts can be stored locally using:
+
+```text
+localStorage
+```
+
+No backend database is required for the core experience.
+
+---
 
 ## 🧪 Troubleshooting
 
-* Music not autoplay → user interaction needed
-* White screen → check `base`
-* 404 → router issue
+### 🎵 Music doesn't autoplay
+
+Browsers commonly block autoplay audio.
+
+Interact with the website first and then start the music manually.
+
+### ⚪ White screen after deployment
+
+Check the Vite `base` configuration:
+
+```js
+base: '/romantic-birthday/',
+```
+
+Make sure it matches your GitHub repository name.
+
+### 🔴 404 after refreshing a page
+
+This can happen with client-side routing on static hosting.
+
+Check your React Router configuration and GitHub Pages deployment setup.
+
+### 📦 Dependency errors
+
+Try reinstalling dependencies:
+
+```bash
+rm -rf node_modules package-lock.json
+npm install
+```
+
+---
+
+## 💡 Concept
+
+This project combines:
+
+```text
+Romance ❤️
+   +
+Interactive Storytelling 🎬
+   +
+3D Experience 🌌
+   +
+Mini Games 🎮
+   +
+Personalized Gifts 🎁
+   +
+Secret Surprise 🔒
+```
+
+The goal is to make a birthday wish feel less like a normal webpage and more like a **small interactive digital experience**. 💖
+
+---
 
 ## 📄 License
 
-Personal use only.
+**Personal use only.**
+
+Copyright © 2026 **Praveenkanth G**. All rights reserved.
+
+This project may not be redistributed, commercially reused, or republished without permission from the author.
+
+---
 
 ## 💌 Acknowledgements
 
+Built with ❤️ using:
+
+* React
+* Vite
 * Three.js
-* Tailwind CSS
+* React Three Fiber
+* Drei
 * Framer Motion
+* Tailwind CSS
+* Zustand
+
+---
+
+## 👨‍💻 Author
+
+**Praveenkanth G**
 
 Made with 💖 for someone special.
+
+---
+
+⭐ If you like the concept, feel free to star the repository.
